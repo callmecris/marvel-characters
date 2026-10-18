@@ -1,0 +1,346 @@
+{
+  "info": {
+    "_postman_id": "6b284aa0-14f4-4459-9649-0635fd10d836",
+    "name": "Marvel Api",
+    "description": "**Pruebas de la API de personajes Marvel – Taller**",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "47630649",
+    "_collection_link": "https://go.postman.co/collection/47630649-6b284aa0-14f4-4459-9649-0635fd10d836?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "GET listar personajes 200",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/characters",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "characters"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET filtrar por status 200",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/characters?status=ACTIVE",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "characters"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "ACTIVE"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET personaje por id 200",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/characters/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "characters",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET personaje no existe 404",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/characters/999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "characters",
+            "999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST crear personaje 201",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"real_name\":\"T Challa\",\"alias\":\"Black Panther\",\"main_power\":\"Vibranium suit\",\"power_level\":82,\"team_id\":1}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/characters",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "characters"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST alias repetido 409",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"real_name\":\"T Challa\",\"alias\":\"Black Panther\",\"main_power\":\"Vibranium suit\",\"power_level\":82,\"team_id\":1}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/characters",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "characters"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST power_level invalido 400",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"real_name\":\"X\",\"alias\":\"Nuevo\",\"main_power\":\"x\",\"power_level\":150}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/characters",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "characters"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST equipo inactivo 400",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "\t{\"real_name\":\"X\",\"alias\":\"Nuevo\",\"main_power\":\"x\",\"power_level\":50,\"team_id\":6}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/characters",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "characters"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PATCH RETIRED a INJURED 400",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"status\":\"INJURED\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/characters/1/status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "characters",
+            "1",
+            "status"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PATCH cambiar status 200",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"status\":\"ACTIVE\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/characters/1/status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "characters",
+            "1",
+            "status"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE personaje 200",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/characters/19",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "characters",
+            "19"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT reemplazar personaje 200",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"real_name\":\"Peter Parker\",\"alias\":\"Spider-Man\",\"main_power\":\"Spider-sense\",\"power_level\":80,\"status\":\"ACTIVE\",\"is_villain\":false,\"team_id\":1}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/characters/16",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "characters",
+            "16"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT personaje no existe 404",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"real_name\":\"Peter Parker\",\"alias\":\"Spider-Man\",\"main_power\":\"Spider-sense\",\"power_level\":80,\"status\":\"ACTIVE\",\"is_villain\":false,\"team_id\":1}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/characters/999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "characters",
+            "999"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
