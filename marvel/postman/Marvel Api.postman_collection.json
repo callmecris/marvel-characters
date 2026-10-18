@@ -341,6 +341,599 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "GET listar equipos 200",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET equipo por id 200",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET equipo no existe 404",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams/999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams",
+            "999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET personajes del equipo 200",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams/1/characters",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams",
+            "1",
+            "characters"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET personajes de equipo que no existe 404",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams/999/characters",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams",
+            "999",
+            "characters"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST crear equipo 201",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Defenders\",\"base\":\"New York\",\"founded_year\":1971}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST nombre repetido 409",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Avengers\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST crear equipo con personajes 201",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Nuevos Vengadores\",\"characterIds\":[17]}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST personaje no existe 404",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Equipo Fantasma\",\"characterIds\":[999]}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST equipo inactivo con personajes 400",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Equipo Cerrado\",\"active\":false,\"characterIds\":[18]}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST founded_year invalido 400",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Equipo Viejo\",\"founded_year\":1800}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT reemplazar equipo 200",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams/7",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams",
+            "7"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Defenders\",\"base\":\"Hells Kitchen\",\"founded_year\":1972,\"active\":true}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT nombre repetido 409",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams/7",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams",
+            "7"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"X-Men\",\"active\":true}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT equipo no existe 404",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams/999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams",
+            "999"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Nada\",\"active\":true}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT desactivar equipo 200",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams/8",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams",
+            "8"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Nuevos Vengadores\",\"active\":false}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PATCH asignar personajes 200",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams/7/characters",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams",
+            "7",
+            "characters"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"characterIds\":[18]}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PATCH personaje no existe 404",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams/7/characters",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams",
+            "7",
+            "characters"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"characterIds\":[999]}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PATCH equipo inactivo 400",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams/6/characters",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams",
+            "6",
+            "characters"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"characterIds\":[18]}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PATCH equipo no existe 404",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams/999/characters",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams",
+            "999",
+            "characters"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"characterIds\":[18]}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE equipo con personajes 409",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE equipo no existe 404",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams/999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams",
+            "999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST crear equipo temporal 201",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Temporal\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE equipo sin personajes 200",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/teams/9",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams",
+            "9"
+          ]
+        }
+      },
+      "response": []
     }
   ]
 }
